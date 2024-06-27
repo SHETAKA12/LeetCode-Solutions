@@ -1,0 +1,17 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        val = {')': '(', '}': '{', ']': '['}
+
+        for c in s:
+            if c in val:
+                if stack:
+                    t = stack.pop()
+                else:
+                    t = '#'  
+                if val[c] != t:
+                    return False
+            else:
+                stack.append(c)
+
+        return not stack
